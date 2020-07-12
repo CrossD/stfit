@@ -38,6 +38,7 @@ teffEst <- function(ids, doy, rmat,
         stop("t.grid.num is bigger than length of doyeval.")
   }
   acomb <- function(...) abind::abind(..., along=3)
+  i = NULL
   teffres = foreach(i = 1:ncol(rmat)) %dopar% {
     resid = rmat[,i]
     nnaidx = !is.na(resid)

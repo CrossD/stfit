@@ -13,7 +13,16 @@ double vecmax(NumericVector x) {
   return *it;
 }
 
-//' @rdname lc_cov_1d_est
+//' Local constant covariance estimation
+//' @param ids a vector indicating subject/group ids
+//' @param time integer vector of observed time points, the minimum time unit is 1
+//' @param resid vector of residual values used for covariance calculation
+//' @param W weight vector, it contains both kernel and bandwidth information in general 
+//' local polynomial estimation setting up
+//' @param t1 time point 1
+//' @param t2 time point 2
+//' @retrun covariance value between t1 and t2
+//' @export
 // [[Rcpp::export]]
 double lc_cov_1d(const NumericVector &ids, const NumericVector &time, const NumericVector &resid, 
                   const NumericVector &W, int t1, int t2){
@@ -32,12 +41,12 @@ double lc_cov_1d(const NumericVector &ids, const NumericVector &time, const Nume
   int k2_stop = std::min(t2 + W_size/2 + 1, time_max);
 
   for(int i = 0; i < N; i++){
-    if(time[i] >= k1_start & time[i] < k1_stop){
+    if((time[i] >= k1_start) & (time[i] < k1_stop)){
       for(int j = 0; j < N; j++){
         if(i == j)
           continue;
         if(ids[i] == ids[j]){
-          if(time[j] >= k2_start & time[j] < k2_stop){
+          if((time[j] >= k2_start) & (time[j] < k2_stop)){
             sumEEKK += resid[i]*resid[j]*W[time[i] - t1 + W_size/2]*W[time[j] - t2 + W_size/2];
             sumKK += W[time[i] - t1 + W_size/2]*W[time[j] - t2 + W_size/2];
           }
@@ -55,11 +64,11 @@ double lc_cov_1d(const NumericVector &ids, const NumericVector &time, const Nume
 
 //' Local constant covariance estimation
 //' @param ids a vector indicating subject/group ids
-//' @param time: integer vector of observed time points, the minimum time unit is 1
-//' @param resid: vector of residual values used for covariance calculation
-//' @param W: weight vector, it contains both kernel and bandwidth information in general 
+//' @param time integer vector of observed time points, the minimum time unit is 1
+//' @param resid vector of residual values used for covariance calculation
+//' @param W weight vector, it contains both kernel and bandwidth information in general 
 //' local polynomial estimation setting up
-//' @param tt: time vector
+//' @param tt time vector
 //' @retrun a covariance matrix evaluated at time points \code{tt} on the covariance function 
 //' @export
 // [[Rcpp::export]]

@@ -218,6 +218,7 @@ meanEst <- function(doy, mat,
   if(is.null(cluster)){
     ## Estimate the overall mean curves for each pixel
     cat("Estimating the overall mean curve for each pixel...\n")
+    i = NULL
     mean.mat = foreach(i = 1:N, .combine = "cbind") %dopar% {
       temporal_mean_est(doy, mat[, i], doyeval, minimum.num.obs)
     }
@@ -242,7 +243,7 @@ meanEst <- function(doy, mat,
 #' @param x independent variable
 #' @param y response variable
 #' @param x.eval vector to predict on
-#' @param minimum.num.obs 
+#' @param minimum.num.obs minimum number of observations needed to run the regression
 #' @param ... other parameters to be passed to \code{smooth.spline} function
 #'
 #' @return predicted values at 'x.eval'

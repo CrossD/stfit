@@ -100,7 +100,7 @@ saveRDS(seffest, file = "inst/testdata/seffest_B.rds")
 ## test data for stfit_landsat function ###
 ###########################################
 res <- stfit_landsat(year, doy, mat, 31, 31, nnr=30,
-use.intermediate.result = FALSE, intermediate.save = TRUE, var.est = TRUE)
+use.intermediate.result = FALSE, intermediate.save = FALSE, var.est = TRUE)
 saveRDS(res, file = "inst/testdata/stfit_landsat_B.rds")
 
 

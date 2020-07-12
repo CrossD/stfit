@@ -21,7 +21,8 @@ mat0 = as.matrix(df[,-c(1:2)])
 #### partial missing image indexes with different missing percentage
 ##### selected partially observed images indexes
 pidx = c(68, 209, 352, 605, 624, 74, 156, 263, 273, 499, 184, 369, 508, 517, 565)
-pmat = readRDS("../missing_pattern/output/missing_pattern.rds")
+pmat = as.matrix(landsat106[landsat106$year >= 2000,-c(1:2)])[pidx,]
+pmat[!is.na(pmat)] = 1
 #### fully observed image indexes from different seasons
 fidx1 = c(13, 101, 267, 432, 485)
 fidx2 = c(21, 110, 192, 280, 493)

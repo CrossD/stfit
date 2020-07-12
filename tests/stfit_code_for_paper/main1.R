@@ -58,24 +58,24 @@ fidxb = c(fidx1b, fidx2b, fidx3b, fidx4b)
 #################################################
 #### Figure 1
 pdf(paste0("output/fig_01.pdf"), width = 8, height = 5)
-landsatVis(dfB[dfB$year == 2015, -c(1:2)], 
+print(landsatVis(dfB[dfB$year == 2015, -c(1:2)], 
            names.attr = as.character(dfB$doy[dfB$year == 2015]),
-           layout = c(9,5))
+           layout = c(9,5)))
 dev.off()
 
 #### Fig 3
 pdf("output/fig_03_left.pdf", width =6, height=5.5)
-landsatVis(dfA[116, -c(1:2)], margin = FALSE)
+print(landsatVis(dfA[116, -c(1:2)], margin = FALSE))
 dev.off()
 pdf("output/fig_03_right.pdf", width =6, height=5.5)
-landsatVis(dfB[198, -c(1:2)], margin = FALSE)
+print(landsatVis(dfB[198, -c(1:2)], margin = FALSE))
 dev.off()
 
 #### Fig 4
 pdf("output/fig_04.pdf", width=6.9, height=5.5)
-landsatVis(pmat, colthm = colthm2,
+print(landsatVis(pmat, colthm = colthm2,
            names.attr = paste0("P", 1:15),
-           layout = c(5, 3), colorkey=FALSE)
+           layout = c(5, 3), colorkey=FALSE))
 dev.off()
 
 ################ Illustration of the STFIT algorithm #################
@@ -239,50 +239,50 @@ rst_lst[[10]] = raster(sqrt(matrix(varest, 31)))
 
 ## Fig 5 Left
 pdf("output/fig_05_left.pdf", width =6, height=5.5)
-levelplot(rst_lst[[1]], par.settings = colthm, at = seq(200, 1300, length.out = 20), margin = FALSE)
+print(levelplot(rst_lst[[1]], par.settings = colthm, at = seq(200, 1300, length.out = 20), margin = FALSE))
 dev.off()
 ## Fig 5 Right
 pdf("output/fig_05_right.pdf", width =6, height=5.5)
-levelplot(rst_lst[[2]], par.settings = colthm, at = seq(200, 1300, length.out = 20), margin = FALSE)
+print(levelplot(rst_lst[[2]], par.settings = colthm, at = seq(200, 1300, length.out = 20), margin = FALSE))
 dev.off()
 ## Fig 6 Left
 pdf("output/fig_06_left.pdf", width =6, height=5.5)
-levelplot(rst_lst[[3]], par.settings = colthm, at = seq(200, 1300, length.out = 20), margin = FALSE)
+print(levelplot(rst_lst[[3]], par.settings = colthm, at = seq(200, 1300, length.out = 20), margin = FALSE))
 dev.off()
 ## Fig 6 Right
 pdf("output/fig_06_right.pdf", width =6, height=5.5)
-levelplot(rst_lst[[4]], par.settings = colthm1, at = seq(-245, 245, length.out = 20), margin = FALSE)
+print(levelplot(rst_lst[[4]], par.settings = colthm1, at = seq(-245, 245, length.out = 20), margin = FALSE))
 dev.off()
 ## Fig 7 Left
 pdf("output/fig_07_left.pdf", width =6, height=5.5)
-levelplot(rst_lst[[5]], par.settings = colthm1, at = seq(-245, 245, length.out = 20), margin = FALSE)
+print(levelplot(rst_lst[[5]], par.settings = colthm1, at = seq(-245, 245, length.out = 20), margin = FALSE))
 dev.off()
 # pdf("output/fig_07_left1.pdf", width =6, height=5.5)
 # levelplot(rst_lst[[3]] + rst_lst[[5]], par.settings = colthm, at = seq(200, 1300, length.out = 20), margin = FALSE)
 # dev.off()
 ## Fig 7 Right
 pdf("output/fig_07_right.pdf", width =6, height=5.5)
-levelplot(rst_lst[[6]], par.settings = colthm1, at = seq(-245, 245, length.out = 20), margin = FALSE)
+print(levelplot(rst_lst[[6]], par.settings = colthm1, at = seq(-245, 245, length.out = 20), margin = FALSE))
 dev.off()
 ## Fig 9 Left
 pdf("output/fig_09_left.pdf", width =6, height=5.5)
-levelplot(rst_lst[[7]], par.settings = colthm1, at = seq(-245, 245, length.out = 20), margin = FALSE)
+print(levelplot(rst_lst[[7]], par.settings = colthm1, at = seq(-245, 245, length.out = 20), margin = FALSE))
 dev.off()
 ## Fig 9 Right
 pdf("output/fig_09_right.pdf", width =6, height=5.5)
-levelplot(rst_lst[[9]], par.settings = colthm1, at = seq(-245, 245, length.out = 20), margin = FALSE)
+print(levelplot(rst_lst[[9]], par.settings = colthm1, at = seq(-245, 245, length.out = 20), margin = FALSE))
 dev.off()
 
 # pdf("output/fig_10_left.pdf", width =6, height=5.5)
-# levelplot(rst_lst[[3]] + rst_lst[[5]] + rst_lst[[7]], par.settings = colthm,
-#           at = seq(200, 1300, length.out = 20), margin = FALSE)
+# print(levelplot(rst_lst[[3]] + rst_lst[[5]] + rst_lst[[7]], par.settings = colthm,
+#           at = seq(200, 1300, length.out = 20), margin = FALSE))
 # dev.off()
 # # pdf("output/imputed.pdf", width =6, height=5.5)
-# # levelplot(rst_lst[[8]], par.settings = colthm, at = seq(200, 1300, length.out = 20), margin = FALSE)
+# # print(levelplot(rst_lst[[8]], par.settings = colthm, at = seq(200, 1300, length.out = 20), margin = FALSE))
 # # dev.off()
 # pdf("output/fig_10_right.pdf", width =6, height=5.5)
 # ## range(values(rst_lst[[10]]))
-# levelplot(rst_lst[[10]], par.settings = colthm, margin = FALSE)
+# print(levelplot(rst_lst[[10]], par.settings = colthm, margin = FALSE))
 # dev.off()
 
 ################ Imputation  with stfit_landsat function ###############
@@ -328,14 +328,14 @@ pdf("output/fig_10.pdf", width =6, height=5.5)
 #                                paste0("F", c(3,7,14,18), "P", c(6,8,14,15), " impu"),
 #                                paste0("F", c(3,7,14,18), "P", c(6,8,14,15), " sd"))),
 #           layout = c(4,4), zscaleLog = TRUE)
-levelplot(s, par.settings = rasterTheme(panel.background=list(col="black"),
+print(levelplot(s, par.settings = rasterTheme(panel.background=list(col="black"),
                                         region = brewer.pal(9, 'YlOrRd')[1:7]),
           index.cond=list(c(seq(1, 16, 4), seq(2, 16, 4), seq(3, 16, 4), seq(4, 16, 4))),
           names.attr = c(rbind(paste0("F", c(3,7,14,18)),
                                paste0("F", c(3,7,14,18), "P", c(6,8,14,15)),
                                paste0("F", c(3,7,14,18), "P", c(6,8,14,15), " impu"),
                                paste0("F", c(3,7,14,18), "P", c(6,8,14,15), " sd"))),
-          layout = c(4,4), zscaleLog = TRUE)
+          layout = c(4,4), zscaleLog = TRUE))
 
 dev.off()
 
@@ -344,8 +344,8 @@ dev.off()
 # levelplot(stack(rst_list1[seq(2, 16, 4)]), par.settings = colthm, layout=c(4,1),
 #           names.attr = paste0("F", c(3,7,14,18), "P", c(6,8,14,15)))
 # pdf("output/fig_12.pdf", width =6, height=5.5)
-# levelplot(stack(rst_list1[seq(4, 16, 4)]), par.settings = colthm, layout=c(4,1),
-#           names.attr = paste0("F", c(3,7,14,18), "P", c(6,8,14,15), " sd"))
+# print(levelplot(stack(rst_list1[seq(4, 16, 4)]), par.settings = colthm, layout=c(4,1),
+#           names.attr = paste0("F", c(3,7,14,18), "P", c(6,8,14,15), " sd")))
 # dev.off()
 # levelplot(stack(rst_list1[c(seq(2, 16, 4), seq(4, 16, 4))]), par.settings = colthm,
 #           layout=c(4,2))
@@ -356,13 +356,13 @@ sapply(seq(4, 16, 4), function(i) sd(values(rst_list1[[i]])))
 
 ## Fig S1
 pdf("output/fig_S1.pdf", width=6.9, height=5.5)
-landsatVis(matA[fidxa,], 
-           names.attr = paste0("F", 1:19), layout = c(5,4))
+print(landsatVis(matA[fidxa,], 
+           names.attr = paste0("F", 1:19), layout = c(5,4)))
 dev.off()
 ## Fig S2 
 pdf("output/fig_S2.pdf", width=6.9, height=5.5)
-landsatVis(matB[fidxb,], 
-           names.attr = paste0("F", 1:20), layout = c(5,4))
+print(landsatVis(matB[fidxb,], 
+           names.attr = paste0("F", 1:20), layout = c(5,4)))
 dev.off()
 ## Table S1 (a)
 print(xtable::xtable(

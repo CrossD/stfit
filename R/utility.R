@@ -66,7 +66,7 @@ rmOutlier <- function(rst){
 
 #' Missing value percentages
 #'
-#' @param x A `RasterStack` object
+#' @param x A \code{RasterStack} object
 #' @param mc.cores Numer of cores to use
 #'
 #' @return A vector of percent of missing values for each layer
@@ -76,6 +76,7 @@ pctMissing <- function(x, mc.cores){
   if(missing(mc.cores)) mc.cores = parallel::detectCores()
   doParallel::registerDoParallel(3)
   nl = nlayers(x)
+  i = NULL
   foreach::foreach(i=1:nl, .combine = c) %dopar%{
     val = values(x[[i]])
     sum(is.na(val))/length(val)
@@ -110,31 +111,19 @@ getMissingLayers <- function(rst.list){
 }
 
 
-#' Get the missing pattern (mask) of x
-#' @name getMask
-#' @rdname getMask
-#' @exportMethod getMask
-setGeneric (
-  name = "getMask",
-  def = function(object, ...) {
-    standardGeneric("getMask")
-  }
-)
 
-#' @param object each row is am image; each column is the stacked values of an image
+#' Get image mask
+#' 
+#' @param object A numeric matrix. Each row is an row stacked image.
+#'
 #' @param tol If the percentage of missing values for a pixel over time is greater than this
 #' value, this pixel is treated as a mask value.
-#'
-#' @rdname getMask
-#' @aliases getMask,matrix-method
-setMethod("getMask", "matrix",
-          definition = function(object, tol = 0.95, ...) {
-            return(
-              apply(object, 2, function(x) {
-                sum(is.na(x))/length(x) >= tol
-              }))
-          }
-)
+getMask <- function(object, tol = 0.95) {
+  return(
+    apply(object, 2, function(x) {
+      sum(is.na(x))/length(x) >= tol
+    }))
+}
 
 #' Epanicnicov kernel function
 #'

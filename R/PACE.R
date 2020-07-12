@@ -1,4 +1,5 @@
 PACE2d = function(mat, ev.vec, sigma2, ev.val, var.est=FALSE){
+  i = NULL
   res = foreach (i = 1:nrow(mat)) %dopar%{
     nonna.idx = !is.na(mat[i,])
     non.na.num = sum(nonna.idx)
@@ -43,6 +44,7 @@ PACE1d = function(ids, doy, resid, ev.vec, nugg, ev.val, doyeval, idseval, var.e
     idseval = sort(unique(ids))
   if(!all(idseval %in% ids))
     stop("idseval is not in ids.")
+  i = NULL
   res = foreach(i = 1:length(idseval)) %dopar%{
     id.idx = which(ids == idseval[i])
     doy.idx = which(doyeval %in% doy[id.idx])
@@ -71,18 +73,6 @@ PACE1d = function(ids, doy, resid, ev.vec, nugg, ev.val, doyeval, idseval, var.e
     tvarmat = t(sapply(1:length(xi.var.list), 
                        function(i) apply(ev.vec, 1, 
                                          function(x) sum(x*t(x*xi.var.list[[i]])))))
-    # doy.idx = which(doyeval %in% doy[id.idx])
-    # the following can work for the case when duplicates(same doy and year) in data, and not sorted necssarily
-    doy.idx <- sapply(doy[id.idx], function(x, y) {which(x == y)}, y = doyeval)
-    if(length(ev.val) == 1){
-      xi.result = ev.val * t(ev.vec[doy.idx, ]) %*%
-        solve(ev.val* ev.vec[doy.idx, ] %*% t(ev.vec[doy.idx, ]) +  diag(nugg, length(id.idx))) %*% resid[id.idx]
-    } else{
-      phi = ev.vec[doy.idx,, drop=FALSE]
-      tmp = t(phi) * ev.val
-      xi.result =tmp %*% solve(phi %*% tmp + diag(nugg, length(id.idx)), resid[id.idx])
-    }
-    xi.result
   }
   
   return(list(idseval = idseval,
@@ -91,4 +81,3 @@ PACE1d = function(ids, doy, resid, ev.vec, nugg, ev.val, doyeval, idseval, var.e
               xi.est = xi.est,
               xi.var.list = xi.var.list))
 }
-

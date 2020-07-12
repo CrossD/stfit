@@ -13,7 +13,7 @@ smooth_spline(x, y, x.eval = x, minimum.num.obs = 4, ...)
 
 \item{x.eval}{vector to predict on}
 
-\item{minimum.num.obs}{}
+\item{minimum.num.obs}{minimum number of observations needed to run the regression}
 
 \item{...}{other parameters to be passed to \code{smooth.spline} function}
 }

@@ -7,7 +7,7 @@
 pctMissing(x, mc.cores)
 }
 \arguments{
-\item{x}{A `RasterStack` object}
+\item{x}{A \code{RasterStack} object}
 
 \item{mc.cores}{Numer of cores to use}
 }

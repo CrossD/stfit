@@ -2,19 +2,16 @@
 % Please edit documentation in R/utility.R
 \name{getMask}
 \alias{getMask}
-\alias{getMask,matrix-method}
-\title{Get the missing pattern (mask) of x}
+\title{Get image mask}
 \usage{
-getMask(object, ...)
-
-\S4method{getMask}{matrix}(object, tol = 0.95, ...)
+getMask(object, tol = 0.95)
 }
 \arguments{
-\item{object}{each row is am image; each column is the stacked values of an image}
+\item{object}{A numeric matrix. Each row is an row stacked image.}
 
 \item{tol}{If the percentage of missing values for a pixel over time is greater than this
 value, this pixel is treated as a mask value.}
 }
 \description{
-Get the missing pattern (mask) of x
+Get image mask
 }

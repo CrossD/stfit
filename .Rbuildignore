@@ -1,6 +1,7 @@
 .gitignore
 .DS_Store
 .Rhistory
+stfit.Rproj
 ^\.git$
 ^.*\.Rproj$         # Automatically added by RStudio,
 ^\.Rproj\.user$     # used for temporary files. 
@@ -8,4 +9,5 @@
 ^cran-comments\.md$ # Comments for CRAN submission
 ^NEWS\.md$          # A news file written in Markdown
 ^\.travis\.yml$     # Used for continuous integration testing with travi
-testdata
+inst/testdata
+tests

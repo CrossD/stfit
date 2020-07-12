@@ -25,18 +25,27 @@ sparse_lc_cov_est1 <- function(X, W, nRow, nCol, nnr, pidx) {
     .Call(`_stfit_sparse_lc_cov_est1`, X, W, nRow, nCol, nnr, pidx)
 }
 
-#' @rdname lc_cov_1d_est
+#' Local constant covariance estimation
+#' @param ids a vector indicating subject/group ids
+#' @param time integer vector of observed time points, the minimum time unit is 1
+#' @param resid vector of residual values used for covariance calculation
+#' @param W weight vector, it contains both kernel and bandwidth information in general 
+#' local polynomial estimation setting up
+#' @param t1 time point 1
+#' @param t2 time point 2
+#' @retrun covariance value between t1 and t2
+#' @export
 lc_cov_1d <- function(ids, time, resid, W, t1, t2) {
     .Call(`_stfit_lc_cov_1d`, ids, time, resid, W, t1, t2)
 }
 
 #' Local constant covariance estimation
 #' @param ids a vector indicating subject/group ids
-#' @param time: integer vector of observed time points, the minimum time unit is 1
-#' @param resid: vector of residual values used for covariance calculation
-#' @param W: weight vector, it contains both kernel and bandwidth information in general 
+#' @param time integer vector of observed time points, the minimum time unit is 1
+#' @param resid vector of residual values used for covariance calculation
+#' @param W weight vector, it contains both kernel and bandwidth information in general 
 #' local polynomial estimation setting up
-#' @param tt: time vector
+#' @param tt time vector
 #' @retrun a covariance matrix evaluated at time points \code{tt} on the covariance function 
 #' @export
 lc_cov_1d_est <- function(ids, time, resid, W, tt) {
