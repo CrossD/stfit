@@ -82,7 +82,7 @@ dev.off()
 
 #### 0. (Optional) Customize function for mean estimation ####
 ## Use 6 cores for parallel computating
-registerDoParallel(6)
+registerDoParallel(3)
 ## Define a customized smoothing function using fourier basis
 .X = fda::eval.basis(1:365, fda::create.fourier.basis(rangeval=c(0,365), nbasis=11))
 ## one dimentional smoothing regression function; given x and y return predicted y given x
@@ -293,7 +293,7 @@ fidx = fidxb[c(3,7,14,18)]
 if(!dir.exists("output/tmp"))
   dir.create("output/tmp")
 
-registerDoParallel(10)
+registerDoParallel(3)
 rst_list1 = list()
 for(i in 1:4){
   mat = matB

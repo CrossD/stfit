@@ -3,7 +3,7 @@ library(stfit)
 library(dplyr)
 library(doParallel)
 library(Matrix)
-registerDoParallel(6)
+registerDoParallel(3)
 test_that("seffEst backward compatibility check", {
   # skip("skip this test")
   skip_on_cran()

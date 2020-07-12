@@ -39,7 +39,7 @@ customfun <- function(x, y, x.eval=1:365, minimum.num.obs = 10){
   return(.X[x.eval,] %*% lmfit$coefficient)
 }
 stfit::opts$set(temporal_mean_est = customfun)
-registerDoParallel(16)
+registerDoParallel(3)
 
 RMSEmat = matrix(NA, nrow(pmat), length(fidx))
 NMSEmat = matrix(NA, nrow(pmat), length(fidx))

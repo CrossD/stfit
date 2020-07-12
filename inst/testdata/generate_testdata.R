@@ -4,7 +4,7 @@ dfB = landsat106 %>% filter(year >= 2000)
 mat = as.matrix(dfB[,-c(1:2)])
 year = dfB$year
 doy = dfB$doy
-registerDoParallel(8)
+registerDoParallel(3)
 
 #########################################
 ## test data for lc_cov_1d* functions ###

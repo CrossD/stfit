@@ -72,7 +72,7 @@
 #' doy = dfB$doy
 #' ## Speed up the calculation by using multi-cores if doParallel package is installed
 #' if(require(doParallel))
-#'   registerDoParallel(8)
+#'   registerDoParallel(3)
 #' meanest = meanEst(doy, matB, 1:365)
 #' idx = round(c(seq(1, 365, length.out = 16)))
 #' landsatVis(meanest$meanmat[idx,], names.attr = paste0("DOY", idx))

@@ -74,7 +74,7 @@ rmOutlier <- function(rst){
 #'
 pctMissing <- function(x, mc.cores){
   if(missing(mc.cores)) mc.cores = parallel::detectCores()
-  doParallel::registerDoParallel(cores=mc.cores)
+  doParallel::registerDoParallel(3)
   nl = nlayers(x)
   foreach::foreach(i=1:nl, .combine = c) %dopar%{
     val = values(x[[i]])

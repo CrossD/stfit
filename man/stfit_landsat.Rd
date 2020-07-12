@@ -125,7 +125,7 @@ matB = as.matrix(dfB[,-c(1:2)])
 year = dfB$year
 doy = dfB$doy
 if(require(doParallel))
-  registerDoParallel(8)
+  registerDoParallel(3)
 res <- stfit_landsat(year, doy, mat, 31, 31, nnr=30,
 use.intermediate.result = FALSE, intermediate.save = TRUE, var.est = TRUE)
 ## visualize the imputed results

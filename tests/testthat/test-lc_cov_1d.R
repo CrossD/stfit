@@ -1,5 +1,5 @@
 test_that("lc_cov_1d function check", {
-  skip("skip this test")
+  # skip("skip this test")
   skip_on_cran()
   lc_cov_1d_r <- function(ids, time, resid, W, t1,t2){
     W_size = length(W)
