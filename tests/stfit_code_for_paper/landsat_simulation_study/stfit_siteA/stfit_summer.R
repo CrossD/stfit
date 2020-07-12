@@ -60,7 +60,7 @@ res = foreach(n = 1:(M*N)) %dopar% {
   if(file.exists(paste0("./stfit_summer/stfit_summer_P", pidx[i], "_F", fidx[j], ".rds"))){
       res1 <- readRDS(paste0("./stfit_summer/stfit_summer_P", pidx[i], "_F", fidx[j], ".rds"))
   } else {
-      res1 <- gapfill_landsat(year, doy, mat, 31, 31, nnr=30, clipRange= c(0,3000),
+      res1 <- stfit_landsat(year, doy, mat, 31, 31, nnr=30, clipRange= c(0,3000),
                               use.intermediate.result = FALSE, intermediate.save = FALSE)
       saveRDS(res1, paste0("./stfit_summer/stfit_summer_P", pidx[i], "_F", fidx[j], ".rds"))
   }

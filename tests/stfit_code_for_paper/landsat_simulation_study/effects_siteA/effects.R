@@ -59,7 +59,7 @@ res1 = foreach(n = 1:(M*N)) %dopar% {
   if(file.exists(paste0("./output/mean_P", pidx[i], "_F", fidx[j], ".rds"))){
     res1 <- readRDS(paste0("./output/mean_P", pidx[i], "_F", fidx[j], ".rds"))
   } else {
-    res1 <- gapfill_landsat(year, doy, mat, 31, 31, teff = FALSE, seff = FALSE,
+    res1 <- stfit_landsat(year, doy, mat, 31, 31, teff = FALSE, seff = FALSE,
                             use.intermediate.result = TRUE, intermediate.save = TRUE,
                             intermediate.dir = paste0("./intermediate_results/P_", pidx[i], "_F", fidx[j], "/"))
     saveRDS(res1, paste0("./output/mean_P", pidx[i], "_F", fidx[j], ".rds"))
@@ -83,7 +83,7 @@ res2 = foreach(n = 1:(M*N)) %dopar% {
   if(file.exists(paste0("./output/teff_P", pidx[i], "_F", fidx[j], ".rds"))){
     res1 <- readRDS(paste0("./output/teff_P", pidx[i], "_F", fidx[j], ".rds"))
   } else {
-    res1 <- gapfill_landsat(year, doy, mat, 31, 31, teff = TRUE, seff = FALSE,
+    res1 <- stfit_landsat(year, doy, mat, 31, 31, teff = TRUE, seff = FALSE,
                             use.intermediate.result = TRUE, intermediate.save = TRUE,
                             intermediate.dir = paste0("./intermediate_results/P_", pidx[i], "_F", fidx[j], "/"))
     saveRDS(res1, paste0("./output/teff_P", pidx[i], "_F", fidx[j], ".rds"))
@@ -107,7 +107,7 @@ res3 = foreach(n = 1:(M*N)) %dopar% {
   if(file.exists(paste0("./output/seff_P", pidx[i], "_F", fidx[j], ".rds"))){
     res1 <- readRDS(paste0("./output/seff_P", pidx[i], "_F", fidx[j], ".rds"))
   } else {
-    res1 <- gapfill_landsat(year, doy, mat, 31, 31, teff = FALSE, seff = TRUE,
+    res1 <- stfit_landsat(year, doy, mat, 31, 31, teff = FALSE, seff = TRUE,
                             use.intermediate.result = TRUE, intermediate.save = TRUE,
                             intermediate.dir = paste0("./intermediate_results/P_", pidx[i], "_F", fidx[j], "/"))
     saveRDS(res1, paste0("./output/seff_P", pidx[i], "_F", fidx[j], ".rds"))

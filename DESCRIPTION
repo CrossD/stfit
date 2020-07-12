@@ -4,7 +4,11 @@ Title: Spatio-Temporal Functional Imputation Tool
 Version: 0.99.3
 Date: 2020-07-06
 Authors@R: person("Weicheng", "Zhu", email = "mingsnu@gmail.com", role = c("aut", "cre"))
-Description: This package provides general functional approach for imputing missing values in satellite data.
+Description: A general spatiotemporal satellite image imputation method based on sparse 
+functional data analytic techniques. The imputation method applies and extends the Functional 
+Principal Analysis by Conditional Estimation (PACE). The underlying idea for the proposed 
+procedure is to impute a missing pixel by borrowing information from temporally and spatially
+contiguous pixels based on the best linear unbiased prediction.  
 BugReports: https://github.com/mingsnu/stfit/issues
 License: GPL (>= 2)
 LazyData: true
