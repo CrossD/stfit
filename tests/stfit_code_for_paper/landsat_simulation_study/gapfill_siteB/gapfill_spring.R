@@ -41,7 +41,7 @@ doybinuni = sort(unique(doybin))
 ## matrix of MxN, column stacking
 N = nrow(fmat)
 M = nrow(pmat)
-registerDoParallel(3)
+registerDoParallel(10)
 res = foreach(n = 1:(M*N)) %dopar% {
   i = (n - 1) %% M + 1 ## ROW INDEX
   j = (n - 1) %/% M + 1 ## COLUMN INDEX
