@@ -1,8 +1,8 @@
 library(feather)
 library(dplyr)
 library(geoR)
-library(raster)
-library(rasterVis)
+# library(raster)
+# library(rasterVis)
 
 df = landsat106 %>% filter(year >= 2000)
 year = df$year
